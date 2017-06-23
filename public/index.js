@@ -10,7 +10,7 @@
 		regCtl.email="";
 		regCtl.password="";
 		regCtl.gender="";
-		regCtl.dob="01/01/2000";
+		regCtl.dob=new Date("01/01/2000");
 		regCtl.address="";
 		regCtl.country="";
 		regCtl.phone="";

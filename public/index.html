@@ -87,7 +87,7 @@
 						<input class="form-control" type="date" name="dob" id="dob" required
 							ng-model="regCtl.dob">
 						<span class="help-block" ng-if="!regCtl.isValid(RegForm,'dob').isvalid">
-							Please enter a valid dob
+							{{regCtl.isValid(RegForm,'dob').msg}}
 						</span>
 					</div>
 
