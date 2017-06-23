@@ -4,7 +4,7 @@
 	var RegCtl=function($http) {
 		var regCtl=this;
 		regCtl.validCountries=["","Singapore","Malaysia","Thailand","Philippines","Vietnam","Indonesia"];
-		regCtl.message="XXX";
+		regCtl.message="";
 
 		regCtl.name="";
 		regCtl.email="";
@@ -15,11 +15,6 @@
 		regCtl.country="";
 		regCtl.phone="";
 
-// 	regCtl.isValid=function(form,field) {
-// 		if (form[field].$pristine) return({classval:"",ifval:false});
-// 		if (form[field].$invalid && form[field].$dirty) {return {classval:"has-error",ifval:true};}
-// 		else {return {classval:"has-success",ifval:false};}
-// 		}
 		regCtl.isValid=function(form,field) {
 			var val=regCtl[field];
 			var msg="";
@@ -28,7 +23,7 @@
 
          switch(field) {
 				case "name":
-					if (val && -1!=val.search(/^[a-zA-Z'\s]+$/i)) {     
+					if (val && -1!=val.search(/^[a-zA-Z'\s]+$/i)) { // Allow apostrophe for O'Grady
 						valid=true;
 						classval="has-success";
 					} else {
@@ -60,7 +55,7 @@
 							classval="has-success";
 						}
 						else { // used valid characters, but not the right mix
-							msg="Please include at least one uppercase, one lowercase, one digit and one special character";
+							msg="Almost there. Please include at least one uppercase, one lowercase, one digit and one special character";
 						}
 					} else { // used invalid characters, or too short
 						msg="Invalid password. Please enter at least 8 characters, allowed are letters,numbers, special characters (@#$)";
@@ -121,7 +116,6 @@
 					//
 				}
 				// return result of validation
- 				// console.log("Returning", {classval:classval,isvalid:valid,msg:msg});
  				return {classval:classval,isvalid:valid,msg:msg};
 			}
 
@@ -136,8 +130,8 @@
 			regCtl.phone="";
 			regCtl.message="";
 			}
+
 		regCtl.submitForm=function() {
-			console.log("in submitForm()");
 			var the_record={
 				name:regCtl.name,
 				email:regCtl.email,
@@ -147,7 +141,8 @@
 				address:regCtl.address,
 				country:regCtl.country,
 				phone:regCtl.phone,
-			}
+				}
+
 			var p=$http.get("/register",{params:{record:the_record}});
 			p.then(function(success) {
 					regCtl.message="Registration was successful";

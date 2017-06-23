@@ -13,10 +13,10 @@
 	<script src="/index.js"></script>
 </head>
 <body ng-controller="RegCtl as regCtl">
- <h1>Registration Page</h1>  
 	<div class="container">
+		<h1>Registration Page</h1>  
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-md-8">
 
 				<form name="RegForm" novalidate ng-submit="regCtl.submitForm()">
 
@@ -68,7 +68,10 @@
 						</p>
 					</div>
 		
+					<!-- -------------------------------------------------------------------- -->
 					<!-- SAFARI doesn't support type="date", so using a different date picker -->
+					<!-- -------------------------------------------------------------------- -->
+<!--
 					<div class="form-group" ng-class="regCtl.isValid(RegForm,'dob').classval">
 						<label for="dob">Date of Birth:</label>
 						<datepicker date-format="dd/MM/yyyy" date-max-limit="02/01/2017">
@@ -78,8 +81,7 @@
 							{{regCtl.isValid(RegForm,'dob').msg}}
 						</span>
 					</div>
-
-               <!--
+-->
 					<div class="form-group" ng-class="regCtl.isValid(RegForm,'dob').classval">
 						<label for="dob">DOB:</label>
 						<input class="form-control" type="date" name="dob" id="dob" required
@@ -88,7 +90,6 @@
 							Please enter a valid dob
 						</span>
 					</div>
-					-->
 
 					<div class="form-group" ng-class="regCtl.isValid(RegForm,'address').classval">
 						<label for="address">Address:</label>
@@ -126,13 +127,6 @@
 					<div class="form-group">
 						<button class="btn btn-primary" type="button" ng-disabled="RegForm.$pristine" ng-click="regCtl.resetForm()">Clear</button>
 					</div>
-
-
-
-
-
-
-
 
 					<div class="form-group">
 						{{regCtl.message}}
