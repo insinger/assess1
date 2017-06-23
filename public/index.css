@@ -1,0 +1,13 @@
+.error {
+    border: red 1px solid;
+	 background: pink;
+}
+
+.correct {
+    border: blue 1px solid;
+	 background: lightblue;
+}
+
+.initial {
+    border: yellow 1px solid;
+}

@@ -1,0 +1,30 @@
+-mandatory fields
+email email
+password password
+name text
+gender radio
+dob date
+address text
+country test/select
+contract number text
+submit button
+
+* validation is key
+mandatory
+email valid
+password:
+	min 8 char
+	case sensitive
+	must be mix upper & lower
+	one or more digits
+	@#$
+Must be 18 years old
+only digits +,-, ,() for contact number
+                             
+HTTP GET, show feedback that submitted
+show data on express console
+put in github
+
+
+
+

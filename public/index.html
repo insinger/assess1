@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="RegApp">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
+	<script src="/libs/jquery/dist/jquery.min.js"></script>
+	<script src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/libs/angular/angular.min.js"></script>
+	<link href="/libs/angularjs-datepicker/dist/angular-datepicker.css" rel="stylesheet" type="text/css" />
+	<script src="/libs/angularjs-datepicker/dist/angular-datepicker.js"></script>
+	<link rel="stylesheet" href="/index.css">
+	<script src="/index.js"></script>
+</head>
+<body ng-controller="RegCtl as regCtl">
+ <h1>Registration Page</h1>  
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+
+				<form name="RegForm" novalidate ng-submit="regCtl.submitForm()">
+
+					<div class="form-group" ng-class="regCtl.isValid(RegForm,'name').classval">
+						<label for="name">Name:</label>
+						<input class="form-control" type="text" name="name" id="name" required
+							ng-model="regCtl.name">
+						<span class="help-block" ng-if="!regCtl.isValid(RegForm,'name').isvalid">
+							{{regCtl.isValid(RegForm,'name').msg}}
+						</span>
+					</div>
+
+					<div class="form-group" ng-class="regCtl.isValid(RegForm,'email').classval">
+						<label for="email">Email:</label>
+						<input class="form-control" type="email" name="email" id="email" required
+							ng-model="regCtl.email">
+						<span class="help-block" ng-if="!regCtl.isValid(RegForm,'email').isvalid">
+							{{regCtl.isValid(RegForm,'email').msg}}
+						</span>
+					</div>
+
+					<div class="form-group" ng-class="regCtl.isValid(RegForm,'password').classval">
+						<label for="password">Password:</label>
+						<input class="form-control" type="password" name="password" id="password" required
+							ng-model="regCtl.password">
+						<span class="help-block" ng-if="!regCtl.isValid(RegForm,'password').isvalid">
+							{{regCtl.isValid(RegForm,'password').msg}}
+						</span>
+					</div>
+
+					<div class="form-group" ng-class="regCtl.isValid(RegForm,'gender').classval">
+						<label for="gender">Gender:</label>
+						<br>
+						<label class="radio-inline" >
+							<input type="radio" required name="gender" ng-model="regCtl.gender" value="Male">
+							Male
+						</label>
+						<label class="radio-inline" >
+							<input type="radio" required name="gender" ng-model="regCtl.gender" value="Female">
+							Female
+						</label>
+						<label class="radio-inline" >
+							<input type="radio" required name="gender" ng-model="regCtl.gender" value="Decline">
+							Decline
+						</label>
+						<br>
+						<p class="help-block" ng-if="!regCtl.isValid(RegForm,'gender').isvalid">
+							{{regCtl.isValid(RegForm,'gender').msg}}
+						</p>
+					</div>
+		
+					<!-- SAFARI doesn't support type="date", so using a different date picker -->
+					<div class="form-group" ng-class="regCtl.isValid(RegForm,'dob').classval">
+						<label for="dob">Date of Birth:</label>
+						<datepicker date-format="dd/MM/yyyy" date-max-limit="02/01/2017">
+							<input ng-model="regCtl.dob" name="dob" type="text" placeholder="Choose a date"/>
+						</datepicker>
+						<span class="help-block" ng-if="!regCtl.isValid(RegForm,'dob').isvalid">
+							{{regCtl.isValid(RegForm,'dob').msg}}
+						</span>
+					</div>
+
+               <!--
+					<div class="form-group" ng-class="regCtl.isValid(RegForm,'dob').classval">
+						<label for="dob">DOB:</label>
+						<input class="form-control" type="date" name="dob" id="dob" required
+							ng-model="regCtl.dob">
+						<span class="help-block" ng-if="!regCtl.isValid(RegForm,'dob').isvalid">
+							Please enter a valid dob
+						</span>
+					</div>
+					-->
+
+					<div class="form-group" ng-class="regCtl.isValid(RegForm,'address').classval">
+						<label for="address">Address:</label>
+						<input class="form-control" type="text" name="address" id="address" required
+							ng-model="regCtl.address">
+						<span class="help-block" ng-if="!regCtl.isValid(RegForm,'address').isvalid">
+							{{regCtl.isValid(RegForm,'address').msg}}
+						</span>
+					</div>
+
+					<div class="form-group" ng-class="regCtl.isValid(RegForm,'country').classval">
+						<label for="country">Country:</label>
+						<select name="country" id="country" ng-model="regCtl.country" required >
+							<option ng-repeat="i in regCtl.validCountries" value="{{i}}">{{i}}</option>
+							</span>
+						</select>
+						<p class="help-block" ng-if="!regCtl.isValid(RegForm,'country').isvalid">
+							{{regCtl.isValid(RegForm,'country').msg}}
+						</p>
+					</div>
+
+					<div class="form-group" ng-class="regCtl.isValid(RegForm,'phone').classval">
+						<label for="phone">Phone:</label>
+						<input class="form-control" type="text" name="phone" id="phone" required
+							ng-model="regCtl.phone">
+						<span class="help-block" ng-if="!regCtl.isValid(RegForm,'phone').isvalid">
+							{{regCtl.isValid(RegForm,'phone').msg}}
+						</span>
+					</div>
+
+					<div class="form-group">
+						<button class="btn btn-primary" type="submit" ng-disabled="RegForm.$invalid">Register</button>
+					</div>
+
+					<div class="form-group">
+						<button class="btn btn-primary" type="button" ng-disabled="RegForm.$pristine" ng-click="regCtl.resetForm()">Clear</button>
+					</div>
+
+
+
+
+
+
+
+
+					<div class="form-group">
+						{{regCtl.message}}
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
