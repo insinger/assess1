@@ -105,7 +105,7 @@
 						}
 					break;
 				case "phone":
-					if (val && -1!=val.search(/^\+?[1-9]{1}[0-9\-\(\)\s]{7,15}$/)) {
+					if (val && -1!=val.search(/^\+?[1-9]{1}[0-9\-\(\)\s]{7,15}$/)) { // international too
 						valid=true;
 						classval="has-success";
 					} else {
@@ -124,7 +124,7 @@
 			regCtl.email="";
 			regCtl.password="";
 			regCtl.gender="";
-			regCtl.dob="";
+			regCtl.dob=new Date("01/01/2000");
 			regCtl.address="";
 			regCtl.country="";
 			regCtl.phone="";
